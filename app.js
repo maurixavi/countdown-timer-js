@@ -1,18 +1,25 @@
-const daysElem = document.getElementById("days");
-const hoursElem = document.getElementById("hours");
-const minsElenm = document.getElementById("minutes");
-const secondsElem = document.getElementById("seconds");
+var daysElem = document.getElementById("days");
+var hoursElem = document.getElementById("hours");
+var minsElem = document.getElementById("minutes");
+var secondsElem = document.getElementById("seconds");
+
+var app = document.getElementById('date-form');
+
+app.elements.namedItem('date-input').addEventListener('click', function(){
+    console.log(document.getElementById("date-input").value);
+    countdown();
+})
 
 function countdown() {
-    const untilDate = new Date(document.getElementById("date-input").value);
-    const currentDate = new Date();
+    var untilDate = new Date(document.getElementById("date-input").value);
+    var currentDate = new Date();
+    console.log(document.getElementById("date-input").value);
+    var totalSeconds = (untilDate - currentDate) / 1000;
 
-    const totalSeconds = (untilDate - currentDate) / 1000;
-
-    const days = Math.floor(totalSeconds / 3600 / 24);
-    const hours = Math.floor(totalSeconds / 3600) % 24;
-    const mins = Math.floor(totalSeconds / 60) % 60;
-    const seconds = Math.floor(totalSeconds) % 60;
+    var days = Math.floor(totalSeconds / 3600 / 24);
+    var hours = Math.floor(totalSeconds / 3600) % 24;
+    var mins = Math.floor(totalSeconds / 60) % 60;
+    var seconds = Math.floor(totalSeconds) % 60;
 
     daysElem.innerHTML = days;
     hoursElem.innerHTML = hours;
